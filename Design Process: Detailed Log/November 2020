@@ -7,7 +7,7 @@
     - Set up web elements that need to be gathered from each site
       - Realize that I can only get recent information
       
-#(11/10)# Continued to learn about different approaches to getting information API vs webscape possible challenges: static vs dynamic websites, maintenance of bot
+#(11/10) Continued to learn about different approaches to getting information API vs webscape possible challenges: static vs dynamic websites, maintenance of bot
 (11/11) Roadblock on how to figure out someone’s past performance
 Only record is on way back machine for only a handful of days
 (11/14) For some channels I can use the youtube API (Dream)(3rd Gen) while others will need to be webscraped (Vanoss)(1st Gen)
