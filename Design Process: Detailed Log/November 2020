@@ -1,0 +1,41 @@
+(11/9): Originally I was going to go through all of this by hand until I realized that would take way too long and I don’t have that time
+  - Now I write bot to get recent information for me
+    - Relearn python
+    - Learn web scraping
+    - Set up pip
+    - Set up selenium
+    - Set up web elements that need to be gathered from each site
+      - Realize that I can only get recent information
+      
+#(11/10)# Continued to learn about different approaches to getting information API vs webscape possible challenges: static vs dynamic websites, maintenance of bot
+(11/11) Roadblock on how to figure out someone’s past performance
+Only record is on way back machine for only a handful of days
+(11/14) For some channels I can use the youtube API (Dream)(3rd Gen) while others will need to be webscraped (Vanoss)(1st Gen)
+(11/28) Back after midterms and thanksgiving I got the webdriver working and was able to navigate to open up websites and that’s about it
+Simply used some test code I didn’t develop any actual code yet but just making sure I got all the libraries and stuff installed and running correctly
+Read up to part 3 in Beautiful Soup Documentation and started reading scrapingbee documentation for selenium
+Beautifulsoup and selenium function the same however selenium does something runs the javascript request if website features it where beautifulsoup doesn't
+(11/29) Started looking at different ways to store data preferably in an excel sheet or google sheets some form of row/column format so we can use arrays and whatnot
+Don’t need a database (For organizations and companies) 
+First Categorize Data Type 
+Quantitative idk what else
+Uhh install a lot more packages (Anaconda,Panda,Openpyxl)
+Good god there are so many packages 
+Going to just focus on the data gathering/ web-driving for now 
+Loaded the vanoss page without gui and got back the source html which is a rats nest so I need to find the elements I’m looking for
+Selenium appears to be very slow definitely considering an api approach now if not scrapy is apparently much faster
+
+(11/30) Continued learning about the selenium library and its capabilities from scrapingbee 
+I learned how to
+Find elements
+Login to stuff
+Navigate through websites through clicking 
+First picture on other doc
+I was able to
+Actually login to a demo website
+Having trouble extracting relevant information other than page title ie: (sub-count, popular video titles, view counts, etc)
+Whenever I extract an id for an element “successfully” I get random garbage printed out
+<selenium.webdriver.remote.webelement.WebElement (session="f954178d07a60264c849e9c8ddaa3f6f", element="dda7746d-0543-4b77-984d-4b089b53abaf")>
+Actual webdriver looks like this 
+Second picture on other doc
+Interested to see what is actually causing the random output appears to be consistent throughout channels so it could actually be the sub count not sure why it looks like that though
