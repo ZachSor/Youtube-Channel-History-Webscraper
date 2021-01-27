@@ -1,0 +1,130 @@
+(12/1): Considering API approach however data is limited to a 30day range before the program is launched however the data is extremely precise
+  - I was able to
+    - Print out sub counts
+    - Print out views on videos
+      - I accomplished this using the find full x_path for a specific element and printing its inner html
+  - Depending on the information I get I will need to generalize the program so it can navigate  through a website
+    - Most popular videos would be an interesting stat to get but the position of it relative to the home page of each content creator is different
+      - Navigate to the videos section and go through the most popular
+      - Hopefully index each of those stats in addition to channel stats 
+  - I get the concept behind relative x_path using nodes however I don’t get how to bring nodes together
+    - Simply an alternative  for full x_path
+  - Tested the speed between displaying a tab and not displaying one
+    - There is no difference
+  - Trying to finalize which information I can actually scrape/ How often should a channel be scraped (Every 6 months)
+    - Name of channel
+    - Date of page
+    - Sub count at the time
+    - 5 most viewed videos at the time
+      - Title of each video
+      - Gather data using Holistic Analyzing Statistics
+    - 5 Most recent videos
+      - Title of each video
+      - Gather data using Holistic Analyzing Statistics
+    - By gathering this information all I need to do is figure out the how in other words what type of video was it and how was this effective and the context relative to what was happening (new game, unique idea, new trend, etc)
+      - I might be able to use ML/AI to categorize it for me but that is def beyond my ability right now
+  - After looking into possible sources where to gather information here’s what I can find
+    - Youtube API gives current information
+    - Social Blade has a database of information past Nov 2017 or Dec 2017 in accordance with the EU’s Privacy Regulations (GDPR) 
+    - Way Back Machine has a very dysfunctional non standard layout but has data before 2017
+      - This is what I will go by in order to gather stats however I will need to figure out how to get the Holistic Analyzing Statistics for each video in each generation
+  - The best way to gather creators is probably to put them in generations relative to the data I can gather
+    - Generation 1: 2005-2010 (WBM) 
+      - I doubt anyone Im looking at was a gen 1 maybe pewds
+    - Generation 2 : 2010-2014 (WBM)
+    - Generation 3: 2014-2017 (WBM)
+    - Generation 4:  2017-2020 (SB(for stats))(WBM(for vid details))
+    - Current Stats: Youtube API or Web Scraping
+
+(12/7): Started looking thinking of how to webscrape WBM, SB, and Youtube
+  - Started thinking about fastest way to parse through to get info
+    - Researched hierarchy of html elements look for
+  - The input should be an array of links depending on the platform and it loop through all indexes returning data for everything into a spreadsheet 
+  - WBM: Using the way back machine I would need to get a url that has a lot of screenshots of that website 
+    - Div → body→ months→ months body→ weeks→ weeks body→ individual days
+    - Utilize the <a> with an if elif else statement to determine usable dates
+    - Use the inner html command to extract the exact date
+    - Set up a contingency of a certain amount of screenshots to determine whether or  not to pursue the link
+    - Then I would need to set up a web driver for that “version” of youtube since its a dynamic website
+      - Might not even be able to extract information since there is no id element 
+  - SB: literally no idea
+  - Youtube: id = “video_title” something like that
+    - Return a list of all the ids with that
+    - Make sure most popular or most toggled is selected
+    - Index the results 
+
+(12/29): back after the holidays and finals and some upkeep around the house
+  - Specified the time periods for generations a bit more
+    - Generation 1: 2005>= x < 2010 (WBM) 
+    - I doubt anyone Im looking at was a gen 1 maybe pewds
+    - Generation 2 : 2010>= x <2014 (WBM)
+    - Generation 3: 2014>= x <2017 (WBM)
+    - Generation 4:  2017>= x <2020 (SB(for stats))(WBM(for vid details))
+    - Current Stats: 2020 (Youtube API or Web Scraping)
+  - Started looking more in depth about the SB stats that can be offered and to get the actual weekly sub count changes it is in 
+    - Javascript array way
+      - Not too sure how to read this one out but it has the  subscriber counts but not the dates
+      - Social Blade ID = <div id="socialblade-user-content"> → <script type="text/javascript"> → Array of subscriber info from Jan 2018 - Nov 2020 Reliabally 
+      - 1517374800000 = January 2018
+      - 1606712400000 = November 2020
+    - Chart way 
+      - Xpath: /html/body/div[18]/div[1]/div[1]/div[40]/div[1]/div/svg/g[9]/text/tspan[4]
+      - In other words in under the interactive chart and using the get attribute for the inner html would allow me to extract info but I don’t think this is too unique of an approach
+  - No code changes except deleting the xpath approach because it is not robust enough
+  - Created a general lucid chart to understand how everything works
+
+(12/30): Looking more in depth about the nuance to each sub-function
+  - WBM Sub-Function: 
+    - Using the equation in the general info extractor sub-function will not always yield a link within every date specified sometimes it will be before or after so make sure to have a range that the link can pick from 
+      - Picks the link closest to the date but within a certain range 
+    - The /users and /users/videos might give dates that are very far apart 
+    - YT as a website iterated its layout multiple so there will need to be  a scraper for every version home page and videos page 
+      - There will need to be a SS-Function for each
+  - SB Sub-Function:
+    - I will need to figure out how to return the values in something specifically formatted 
+    - I would need to translate the strings of numbers to dates in the code 
+      - Dream:
+      - Ex: [1606712400000,1500000] [November 2020] 
+      - Ex: [[1504152000000,-7] [August 2017]
+  - Current YT Sub-Function:
+    - No changes probably going to be the most simple 
+  - Stat SSub-Function:
+    - I’ll run stat tests and intervals for all channels using the SB information 
+      - 2018-2020 will give 36 points of change
+    - Using the stat information it will update the WBM process to focus on certain years etc 
+    - I will run confidence intervals first then hypothesis tests after getting all data 
+  - Excel Sub-Function:
+  - Lucid Chart Updates:
+    - Changed some of the inputs to accurately match  what is being given to each sub function
+  - Code Updates
+    - Finished making the user input section for the general function and maybe i’ll get to the general information sub function extractor
+    - Having trouble  transferring variables from one function to another I’m thinking I use a class so that I can define the outputs of each sub function as a field and that can transfer
+
+
+(12/31): Finally started getting into some code stuff 
+  - Python: I started looking at how to organize all of this information in the forms of array matrices lists tuples dictionaries etc and finding out what are the nuance to each of them
+    - Tuples: immutable
+      - Tuples are immutable and can store any type of data type.
+      - it is defined using ().
+      - it cannot be changed or replaced as it is an immutable data type.
+    - Lists: mutable 
+      - The list is an ordered collection of data types.
+      - The list is mutable.
+      - Lists are dynamic and can contain objects of different data types.
+      - List elements can be accessed by index number.
+    - Arrays: mutable
+      - An array is an ordered collection of the similar data types.
+      - An array is mutable.
+      - An array can be accessed by using its index number.
+    - Dictionaries: 
+      - Dictionaries are used to store data values in key:value pairs.
+      - A dictionary is a collection which is unordered, changeable and does not allow duplicates.
+      - Dictionaries are written with curly brackets, and have keys and values
+    - Classes: 
+  - Code:
+    - I managed to figure out how to transfer variables from one function to another
+    - I’m pretty sure the user input portion is done
+    - Started working on the general information extractor experimenting with how to pull certain pieces of data
+      - Currently plugging in the videos page with oldest showing first 
+      - Need to navigate from User→ videos→ oldest showing first
+      - Then need to program the math to figure out point
