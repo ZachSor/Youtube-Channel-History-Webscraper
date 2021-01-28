@@ -1,0 +1,43 @@
+Related Projects
+I did not copy their code I simply got an idea of how to approach this task and where to begin 
+	https://www.analyticsvidhya.com/blog/2019/05/scraping-classifying-youtube-video-data-python-selenium/ 
+	https://medium.com/swlh/how-to-scrape-socialblade-for-youtube-subscription-data-ec7c4bde6933 
+
+Research Articles
+	https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/45530.pdf
+	https://www.sciencedirect.com/science/article/pii/S187705091731757X 
+
+Programming Articles
+	https://www.scrapingbee.com/blog/selenium-python/
+	https://realpython.com/beautiful-soup-web-scraper-python/
+	https://requests.readthedocs.io/en/master/ 
+	https://developers.google.com/youtube/v3/getting-started
+	https://developers.google.com/youtube/terms/developer-policies#e.-handling-youtube-data-and-content 
+	https://developers.google.com/youtube/v3/getting-started#resources 
+	https://realpython.com/api-integration-in-python/
+	https://www.quora.com/How-should-I-store-scraped-web-content 
+	https://www.w3schools.com/html/html_basic.asp 
+	https://www.w3schools.com/html/html_scripts.asp 
+	https://automatetheboringstuff.com/chapter12/ 
+	https://www.datacamp.com/community/tutorials/python-excel-tutorial 
+	https://www.lambdatest.com/blog/complete-guide-for-using-xpath-in-selenium-with-examples/#testid1 
+
+Python Libraries
+	https://pypi.org/project/selenium/ 
+	https://sites.google.com/a/chromium.org/chromedriver/downloads 
+	https://www.bestproxyreviews.com/scrapy-vs-selenium-vs-beautifulsoup-for-web-scraping/#:~:text=While%20Scrapy%20is%20the%20tool,a%20better%20web%20scraping%20developer. 
+	https://www.datacamp.com/community/tutorials/python-excel-tutorial 
+	https://developers.google.com/youtube/v3/quickstart/python 
+	https://developers.google.com/youtube/reporting/v1/code_samples/python 
+
+Tutorials
+	https://www.youtube.com/watch?v=Xjv1sY630Uc 
+
+Data Articles 
+	https://socialblade.com/youtube/help/data-retention
+	https://developers.google.com/youtube/analytics/revision_history 
+	https://developers.google.com/youtube/reporting/v1/reports#historical-data 
+	https://developers.google.com/youtube/reporting/v1/reports/content_owner_reports#video-reports 
+	https://youtube-eng.googleblog.com/2015/10/access-to-youtube-analytics-data-in-bulk.html 
+	https://developers.google.com/youtube/reporting/v1/reports/metrics#subscribers_gained 
+	https://developers.google.com/youtube/reporting/v1/reference/rest/?apix=true 
