@@ -52,193 +52,196 @@
     - Next target
 
 (1/6) More Code stuff Lots of debugging 
-GIE: why is literally not working
-  Message='function' object is not subscriptable
-  Source=C:\Users\zsori\source\repos\Prof Reeves Web Scraper\Prof Reeves Web Scraper\Prof_Reeves_Web_Scraper.py
-  StackTrace:
-  File "C:\Users\zsori\source\repos\Prof Reeves Web Scraper\Prof Reeves Web Scraper\Prof_Reeves_Web_Scraper.py", line 134, in <module>
-    Youtube_Complete_History_Webscraper()
-I needed to unpack UIoutput I think I changed the variables around and didn’t update it all the way around
-[0107/020111.921:INFO:CONSOLE(0)] "Refused to display 'https://accounts.google.com/ServiceLogin?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&hl=en' in a frame because it set 'X-Frame-Options' to 'deny'.", source: https://www.youtube.com/user/DreamTraps/videos?view=0&sort=da&flow=grid (0)
-what is this 
+- GIE: why is literally not working
+  - Message='function' object is not subscriptable
+  - Source=C:\Users\zsori\source\repos\Prof Reeves Web Scraper\Prof Reeves Web Scraper\Prof_Reeves_Web_Scraper.py
+  - StackTrace:
+  - File "C:\Users\zsori\source\repos\Prof Reeves Web Scraper\Prof Reeves Web Scraper\Prof_Reeves_Web_Scraper.py", line 134, in <module>
+  - Youtube_Complete_History_Webscraper()
+    - I needed to unpack UIoutput I think I changed the variables around and didn’t update it all the way around
+  - [0107/020111.921:INFO:CONSOLE(0)] "Refused to display 'https://accounts.google.com/ServiceLogin?service=youtube&uilel=3&passive=true&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3D%252Fsignin_passive%26feature%3Dpassive&hl=en' in a frame because it set 'X-Frame-Options' to 'deny'.", source: https://www.youtube.com/user/DreamTraps/videos?view=0&sort=da&flow=grid (0)
+    - what is this 
 
 (1/7) More Code Progress
-UI: careful since youtube.com/user/… doesn’t apply to everyone
-/channel is when you are clicking on their channel through subscription list 
-/videos?view=0&sort=da&flow=grid still works
-GIE: good
-SB: 
-Working on extracting channel name and sending that into the search bar for Socialblade
-Better understanding how RE works and making a simple version of it because why not
-It selects the first result 
-Gets information
-I’m losing historical information as every month passes so keep that in mind 
-Stat:
-The data that I am collecting and processing from social  blade is not normally distributed so confidence interval will not be accurate research more options
+  - UI: careful since youtube.com/user/… doesn’t apply to everyone
+    - /channel is when you are clicking on their channel through subscription list 
+      - /videos?view=0&sort=da&flow=grid still works
+  - GIE: good
+  - SB: 
+    - Working on extracting channel name and sending that into the search bar for Socialblade
+      - Better understanding how RE works and making a simple version of it because why not
+    - It selects the first result 
+    - Gets information
+    - I’m losing historical information as every month passes so keep that in mind 
+  - Stat:
+    - The data that I am collecting and processing from social  blade is not normally distributed so confidence interval will not be accurate research more options
 
 (1/9) More Code Progress
-RE:
-I can’t seem to get a complete understanding on how RE works so im writing it down
-General process on how to  write a regular expression
-Variable1 = re.compile(what you are looking for)
-Variable2 = variable1.(string to look through)
-Variable3 = variable2.group()/span() etc
-Trying to understand group(), span()
-GIE:
-I added an extra two indices to the list that exports channel names and upload years  
-organized the code a bit more
-Trying to better understand RE so I can pull the actual channel name from the title to plug into the query for SB_SF
-Got that done in order to get a certain part of a string its [start:end:1]
-SB: 
-Putting my text replacement mini function on hold so I can focus  on the actual web scraper project just going to use regular expressions
-Working on navigating from homepage of social blade to the youtuber’s page
-Having trouble sending information
-Selenium isn’t finding the input field  correctly
+  - RE:
+    - I can’t seem to get a complete understanding on how RE works so im writing it down
+    - General process on how to  write a regular expression
+      - Variable1 = re.compile(what you are looking for)
+      - Variable2 = variable1.(string to look through)
+      - Variable3 = variable2.group()/span() etc
+    - Trying to understand group(), span()
+  - GIE:
+    - I added an extra two indices to the list that exports channel names and upload years  
+    - organized the code a bit more
+    - Trying to better understand RE so I can pull the actual channel name from the title to plug into the query for SB_SF
+      - Got that done in order to get a certain part of a string its [start:end:1]
+  - SB: 
+    - Putting my text replacement mini function on hold so I can focus  on the actual web scraper project just going to use regular expressions
+    - Working on navigating from homepage of social blade to the youtuber’s page
+      - Having trouble sending information
+      - Selenium isn’t finding the input field  correctly
 
 (1/10) More code progress
-SB: printed out the source code when scraping social blade and turns out they don’t like that
-If you’re seeing this message it means for one reason or another your access to the social blade website was blocked by automated systems
-I have to use their API
-Currently learning their API
-Returns information in JSON
-It costs money
-Asking for certain bits of information costs different amounts 
-30Days = 1 credit
-1 year = 2 credits
-3 years = 3 credits
-Cheapest amount is 26.55 (100 credits)
-I would only be able to search up 33 really good creators who have been killing it in the last 3 years
-(generation 4)
-But it gives really good information 
-If run the program in non headless mode I can see the source code 
-LMAO im not paying you im broke and just want to know things
-In order to actually get to peoples pages I could concatenate URLS like i did for the GIE_SF but I want to show a little variation to show that this is possible
-Get page_source without security by running in non-headless mode
-Searching and selecting the channel is more time consuming then plugging in the url via the other way but its still worth knowing just in case
-[43644:54920:0110/232744.737:ERROR:ssl_client_socket_impl.cc(960)] handshake failed; returned -1, SSL error code 1, net_error -101
-This keeps showing up randomly and this happens between 2-5 times
-input/submit button works but SB has a DDoS protection that makes it very hard to navigate through their website
-https://socialblade.com/youtube/user/mrbeast6000 doesn’t always yield the correct result however
-Using the link from the subscriber list which I can only assume is some absolutely unique channel id there is a crazy string of characters that can be plugged into a base url that always gets the right answer
-https://socialblade.com/youtube/channel/ = base URL
-UCtHaxi4GTYDpJgMSGy7AeSw = Micheal Reeves Channel ID
-GIE:
-Crazy string can be found in organized videos
-<link rel="canonical" href="https://www.youtube.com/channel/UCTkXRDQl0luXxVQrRQvWS6w"> (Dream)
-Should be extracted in the GIE
+  - SB: printed out the source code when scraping social blade and turns out they don’t like that
+    - If you’re seeing this message it means for one reason or another your access to the social blade website was blocked by automated systems
+      - I have to use their API
+    - Currently learning their API
+      - Returns information in JSON
+      - It costs money
+        - Asking for certain bits of information costs different amounts 
+          - 30Days = 1 credit
+          - 1 year = 2 credits
+          - 3 years = 3 credits
+      - Cheapest amount is 26.55 (100 credits)
+      - I would only be able to search up 33 really good creators who have been killing it in the last 3 years
+        - (generation 4)
+    - But it gives really good information 
+    - If run the program in non headless mode I can see the source code 
+      - LMAO im not paying you im broke and just want to know things
+    - In order to actually get to peoples pages I could concatenate URLS like i did for the GIE_SF but I want to show a little variation to show that this is possible
+      - Get page_source without security by running in non-headless mode
+      - Searching and selecting the channel is more time consuming then plugging in the url via the other way but its still worth knowing just in case
+      - [43644:54920:0110/232744.737:ERROR:ssl_client_socket_impl.cc(960)] handshake failed; returned -1, SSL error code 1, net_error -101
+        - This keeps showing up randomly and this happens between 2-5 times
+    - input/submit button works but SB has a DDoS protection that makes it very hard to navigate through their website
+    - https://socialblade.com/youtube/user/mrbeast6000 doesn’t always yield the correct result however
+      - Using the link from the subscriber list which I can only assume is some absolutely unique channel id there is a crazy string of characters that can be plugged into a base url that always gets the right answer
+    - https://socialblade.com/youtube/channel/ = base URL
+    - UCtHaxi4GTYDpJgMSGy7AeSw = Micheal Reeves Channel ID
+  - GIE:
+    - Crazy string can be found in organized videos
+      - <link rel="canonical" href="https://www.youtube.com/channel/UCTkXRDQl0luXxVQrRQvWS6w"> (Dream)
+      - Should be extracted in the GIE
 
 (1/11) More Code Progress
-GIE:
-Making the uniqueID portion  
-Tried using REL to nararow down the search for the unique ID but the number changes from channel  to channel
-Now using the driver.find_elements_by_name(‘canonical’)
-This always has 3 and the last one is always the unique ID
-Cant use this because it literally relies on the attribute “name” I need to find the “rel” attribute
-Using the driver.find_element_by_tag_name(‘link’)
-I then use the get attribute for rel
-This returns shortcut icon??? 
-This is returning the first instance of these two together	
-I need to use tag_names 
-Originally I was looking up the word link in the HTML of the website and the amount of returns rom that keyword was greater than the len of the array being returned in python
-It should’ve been “<link”
-I now have the correct name
-Nested for loop with regex iterates through all indices and finds the correct link tag that has the uniqueID needed for SB_SF
-Trying to use the type function to see if there is a match in one of the indices but I can’t get it to work because I can’t figure out how to test when there no match
+  - GIE:
+    - Making the uniqueID portion  
+      - Tried using REL to nararow down the search for the unique ID but the number changes from channel  to channel
+    - Now using the driver.find_elements_by_name(‘canonical’)
+      - This always has 3 and the last one is always the unique ID
+        - Cant use this because it literally relies on the attribute “name” I need to find the “rel” attribute
+    - Using the driver.find_element_by_tag_name(‘link’)
+      - I then use the get attribute for rel
+        - This returns shortcut icon??? 
+          - This is returning the first instance of these two together	
+      - I need to use tag_names 
+        - Originally I was looking up the word link in the HTML of the website and the amount of returns rom that keyword was greater than the len of the array being returned in python
+          - It should’ve been “<link”
+      - I now have the correct name
+      - Nested for loop with regex iterates through all indices and finds the correct link tag that has the uniqueID needed for SB_SF
+        - Trying to use the type function to see if there is a match in one of the indices but I can’t get it to work because I can’t figure out how to test when there no match
 
 (1/12) More Code Progress
-GIE:
-Making the unique ID section still
-I have the correct link tag in a huge list and am currently sorting through to return the information
-Was running into a problem about the output to being something other than was expected 
-Solved
-Finally able to get the correct element that has the uniqueID
-Starting to extract the unique ID using regex
-God damn it finally works
+  - GIE:
+    - Making the unique ID section still
+      - I have the correct link tag in a huge list and am currently sorting through to return the information
+        - Was running into a problem about the output to being something other than was expected 
+          - Solved
+      - Finally able to get the correct element that has the uniqueID
+      - Starting to extract the unique ID using regex
+    - God damn it finally works
 
 (1/13) More Code Progess
-SB:
-Trying to generate what exactly I want out of SB_SF
-Run a stat calculation (1)
-Average
-Standard Deviation
-Confidence Interval
-T test
-Hypothesis test
-Using this information flag anything that is statistically significant
-Which months and their respective stats in the last 3 years were the most successful (2)Views & (3)Sub gains
-Has both biggest sub gains/ video views
-Successful
-Either big sub gains or video views 
-Not as successful relative to creator
-Neither big sub gains or video views
-Determine whether this person actually had an explosive growth maybe using some stuff from calc and that duration it happened (4)
-Mean value theorem?
-End points = average slope
-If something crosses a crazy high slope determined by stat stuff then it flags it
-More Code
-Message: stale element reference: element is not attached to the page document
-  (Session info: chrome=87.0.4280.141)
-??? 
-I forgot to change index letters
-Having trouble getting the correct index contents
-Forgot to capitalize something 
-That wasn’t it
-Stat: 
-I need to find a way to test non normally distributed information 
-I need to determine which t test I want to run 
+  - SB:
+    - Trying to generate what exactly I want out of SB_SF
+      - Run a stat calculation (1)
+        - Average
+        - Standard Deviation
+        - Confidence Interval
+        - T test
+        - Hypothesis test
+          - Using this information flag anything that is statistically significant
+      - Which months and their respective stats in the last 3 years were the most successful (2)Views & (3)Sub gains
+          - Has both biggest sub gains/ video views
+        - Successful
+          - Either big sub gains or video views 
+        - Not as successful relative to creator
+          - Neither big sub gains or video views
+      - Determine whether this person actually had an explosive growth maybe using some stuff from calc and that duration it happened (4)
+        - Mean value theorem?
+          - End points = average slope
+        - If something crosses a crazy high slope determined by stat stuff then it flags it
+    - More Code
+      - Message: stale element reference: element is not attached to the page document
+      - (Session info: chrome=87.0.4280.141)
+        - ??? 
+        - I forgot to change index letters
+      - Having trouble getting the correct index contents
+        - Forgot to capitalize something 
+          - That wasn’t it
+  - Stat: 
+    - I need to find a way to test non normally distributed information 
+      - I need to determine which t test I want to run 
 
 (1/14) More code progress
-SB:
-Got the correct index for the java script that has the information now trying to figure out how to go through all the numbers
-re.compile(r‘all month numbers,\d’)
-Forgot to add a bracket and now it works
-I only did for one month I might need to make a dictionary for all the months or something
-Labeled where all the arrays are used
-Started making a dictionary that a loop can use to add definitions to 
-Trying to figure out how to change definitions of the same terms between each dictionary not working out too well 
-GIE: 
-Labeled where all the arrays are used
+  - SB:
+    - Got the correct index for the java script that has the information now trying to figure out how to go through all the numbers
+      - re.compile(r‘all month numbers,\d’)
+        - Forgot to add a bracket and now it works
+        - I only did for one month I might need to make a dictionary for all the months or something
+    - Labeled where all the arrays are used
+    - Started making a dictionary that a loop can use to add definitions to 
+      - Trying to figure out how to change definitions of the same terms between each dictionary not working out too well 
+  - GIE: 
+    - Labeled where all the arrays are used
 
 (1/15) More code progress
-SB: Testing new ways other than dictionary 
-1X2 array (x12)(x3) → 1 creator → 1index in array
-Dictionary → creator → 1 index in array
-I can’t figure out how to make x amount of dictionaries and change its respective terms or the other way 
-Problem: It changes both arrays to be the same thing or I can only one unique array on at a time
-Channel 1: [1,2,3]
-Channel 2: [4,5,6]
-All Channels
-Should be: [[1,2,3],[4,5,6]]
-Currently: [[4,5,6],[4,5,6]]
-I’m seeing a lot of a module called num.py and it might help apparently its a better version of lists
-Also I would need to learn the panda library to store information
-Finished defining all  the months and labeling which is which
+  - SB: Testing new ways other than dictionary 
+    - 1X2 array (x12)(x3) → 1 creator → 1index in array
+    - Dictionary → creator → 1 index in array
+      - I can’t figure out how to make x amount of dictionaries and change its respective terms or the other way 
+    - Problem: It changes both arrays to be the same thing or I can only one unique array on at a time
+      - Channel 1: [1,2,3]
+      - Channel 2: [4,5,6]
+      - All Channels
+        - Should be: [[1,2,3],[4,5,6]]
+        - Currently: [[4,5,6],[4,5,6]]
+    - I’m seeing a lot of a module called num.py and it might help apparently its a better version of lists
+    - Also I would need to learn the panda library to store information
+    - Finished defining all  the months and labeling which is which
 
 (1/18) Took a break but now I’m back
-SB:  I’m just going to start coding and see if I was overcomplicating things once I get the function down I’ll make it more efficient 
-Started making a complete archive the sub change 
-When I am listing the data from one year and move to another year it messes up stored data
-Forgot an index letter before
-I have a complete list of sub changes since feb 2018
-I might organize some lists so that I can get certain years
+  - SB:  I’m just going to start coding and see if I was overcomplicating things once I get the function down I’ll make it more efficient 
+    - Started making a complete archive the sub change 
+      - When I am listing the data from one year and move to another year it messes up stored data
+        - Forgot an index letter before
+      - I have a complete list of sub changes since feb 2018
+      - I might organize some lists so that I can get certain years
 
 (1/20) Some Code progress
-SB:
-I managed to organize the complete archive so that it is all in one index for another  list
-Currently debugging having multiple creators with their  respective monthly sub changes in this other  list
-I didn’t do much cuz I went to watch the inauguration for a while then went to  class
+  - SB:
+    - I managed to organize the complete archive so that it is all in one index for another  list
+    - Currently debugging having multiple creators with their  respective monthly sub changes in this other  list
+    - I didn’t do much cuz I went to watch the inauguration for a while then went to  class
 
 (1/21) Some Code progress
-SB: 
-I’m doing more testing and its having problems with multiple creators
-Its also having problems with dream for some reason 
-Dream is currently printing out video monthly changes and its not printing out all of them failing on the second search
-NoneType' object has no attribute 'start
-I’ve been using the same code for everyone else idk why this is acting up
-<re.Match object; span=(7363, 7381), match='1519794000000,240]'>
-<class 're.Match'>
-(7363, 7381)
-None
-<class 'NoneType'>
-??????
-I tried with  start as a test and it gave me the correct start
+  - SB: 
+    - I’m doing more testing and its having problems with multiple creators
+    - Its also having problems with dream for some reason 
+      - Dream is currently printing out video monthly changes and its not printing out all of them failing on the second search
+        - NoneType' object has no attribute 'start
+          - I’ve been using the same code for everyone else idk why this is acting up
+        - <re.Match object; span=(7363, 7381), match='1519794000000,240]'>
+        - <class 're.Match'>
+        - (7363, 7381)
+        - None
+        - <class 'NoneType'>
+          - ??????
+          - I tried with  start as a test and it gave me the correct start
+
+(1/27) No code progress
+  - Just organized files online
