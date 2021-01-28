@@ -1,0 +1,110 @@
+############### Testing
+def testing_code():
+    masterArray = []
+    yearArray = [0,0,0]
+
+    subArray1 = [0,0,0]
+    subArray2 = [0,0,0]
+    subArray3 = [0,0,0]
+
+    for i in range(0,2):                    # creator ??????            The problem is that it isn't assigning the values of the creator index to be independent from each other
+        masterArray.append(0)
+        for j in range (0,3):               # all years
+
+            if j == 0:   #2018                   # all months / subs
+                for k in range (0,len(subArray1)):
+                    userInput = input("what is the monthly change of subs in the creator: ")
+                    subArray1[k] = userInput
+
+        
+            elif j == 1:    #2019
+                for l in range (0,len(subArray2)):
+                    userInput = input("what is the monthly change of subs in the creator: ")
+                    subArray2[l] = userInput
+        
+            elif j == 2:    #2020
+                for a in range (0,len(subArray3)):
+                    userInput = input("what is the monthly change of subs in the creator: ")
+                    subArray3[a] = userInput
+
+        yearArray = [subArray1,subArray2,subArray3]
+        
+        print(yearArray)
+
+        masterArray[i] = yearArray
+        
+        
+    
+    print(masterArray)
+
+#testing_code()
+
+def testing_code2():
+    numChannels = int(input('how many channels: '))
+    allChannels = []
+    allChannels2 = []
+    
+    channelHistory = [0,0,0]
+
+    for i in range(0,numChannels):
+        allChannels.append(0)
+        allChannels2.append(0)
+
+    print(allChannels)
+    for j in range(0,numChannels):
+        year2018 = input('What happened in 2018: ')
+        year2019 = input('What happened in 2019: ')
+        year2020 = input('What happened in 2020: ')
+
+        channelHistory = [year2018,year2019,year2020]
+
+        print(j)
+        print(channelHistory)
+        allChannels.append(channelHistory)
+        print(allChannels)
+  #      allChannels2[j] = allChannels[j]
+   #     print(allChannels)
+    #    print(allChannels2)
+    print(allChannels)
+
+#testing_code2()
+
+#definition approach testing
+    #print(subArray1)
+    #print(coordinateArray)
+  #      for k in range (0,3):
+   #         subArray1.append(0)
+    #        gamerInput = input("what is the most epic moment: ")
+     #       subArray1[k] = gamerInput
+      #  coordinate
+    
+    #gamerArray = []
+    #saying = []
+    #gamer = {
+    #   "WOTD":"ok"
+     #  }
+    #nongamer = {
+      #  "WOTF":"no"
+       # }
+ #   for i in range (0,2):
+  #      saying.append(0)
+   #     saying[i] = input('what is the word of the day: ')
+    #    gamer.update({"WOTD": saying})
+     #   nongamer.update({"WOTD": saying})
+      #  gamerArray.append(gamer)
+       # gamerArray.append(nongamer)
+   # print(gamerArray)
+   
+
+   #Master array
+def easyMasterArray():
+    array1 = [0,1,2,3,4]
+    array2 = [5,6,7,8,9]
+    array3 = [10,11,12,13,14]
+
+    masterArray = []
+    masterArray.append(array1)
+    masterArray.append(array2)
+    masterArray.append(array3)
+
+    print(masterArray)
