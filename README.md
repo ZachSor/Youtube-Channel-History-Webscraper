@@ -1,4 +1,9 @@
 ## Youtube-Channel-History-Webscraper
+
+### Function
+A webscraper that returns statistics about any youtuber
+
+### Rational
 My youtube feed is filled with all of these people with an extraordinary amount of success on the platform.
 
   I wondered how they did it because there is always a reason behind everything. Also, I wanted to see how they were able to take advantage of the algorithm and use something to lead to this growth and if it could be replicated not to copy their formulas and trends exactly but to see what helped them become so successful. By combining all of these traits, would you surpass the giants who laid the platform's foundations in the first place? Many people have gained a massive following on youtube. The current competition on youtube is supersaturated, where the amount of original ideas dwindles with every passing upload. 
